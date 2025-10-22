@@ -1,0 +1,55 @@
+<ion-header class="custom-header">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="header-title">
+      Invoice (इनव्हॉइस माहिती)
+    </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button fill="clear" color="light">
+        <ion-icon name="power-outline" color="light" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-row>
+    <ion-col>
+      <div class="d-flex justify-content-center align-items-center">
+        <ion-chip class="barcode-title">
+          <ion-icon name="barcode-outline" color="light"></ion-icon>
+          <ion-label>{{barcodeValue}}</ion-label>
+        </ion-chip>
+      </div>
+    </ion-col>
+    <ion-col size="12">
+      <ion-list>
+        <ion-item>
+          <ion-label>Pokémon Yellow</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Mega Man X</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>The Legend of Zelda</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Pac-Man</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Super Mario World</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+
+  <div class="bottom-btn-container">
+    <ion-button shape="round" class="scan-btn" (click)="proceedDelivery()">
+      Proceed Delivery
+      <ion-icon name="arrow-forward-circle" slot="end"></ion-icon>
+    </ion-button>
+  </div>
+</ion-content>

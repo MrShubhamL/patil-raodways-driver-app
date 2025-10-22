@@ -1,17 +1,70 @@
-<ion-header [translucent]="true">
+<ion-header class="custom-header">
   <ion-toolbar>
-    <ion-title>
-      Tab 1
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title class="header-title">
+      Home (होम)
     </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button fill="clear" color="light">
+        <ion-icon name="power-outline" color="light" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="false" class="home-content">
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <!-- Pending Deliveries -->
+  <div class="section-title">Pending Deliveries (चालू वितरणे)</div>
+  <div class="delivery-list">
+    <ion-card class="delivery-card">
+      <ion-item lines="none">
+        <ion-icon name="bus-outline" slot="start"></ion-icon>
+        <ion-label>
+          <h2>Delivery to Sarah Johnson</h2>
+          <p>123 Main St, Anytown</p>
+        </ion-label>
+      </ion-item>
+    </ion-card>
+
+    <ion-card class="delivery-card">
+      <ion-item lines="none">
+        <ion-icon name="bus-outline" slot="start"></ion-icon>
+        <ion-label>
+          <h2>Delivery to Michael Brown</h2>
+          <p>456 Oak Ave, Anytown</p>
+        </ion-label>
+      </ion-item>
+    </ion-card>
+  </div>
+
+  <!-- Delivery Statistics -->
+  <div class="section-title">Delivery Statistics (वितरण आकडेवारी)</div>
+  <div class="stats">
+    <ion-card class="stat-card">
+      <ion-label>
+        <p>Deliveries Today (आजची वितरणे)</p>
+        <h2>5</h2>
+      </ion-label>
+    </ion-card>
+
+    <ion-card class="stat-card">
+      <ion-label>
+        <p>Average Rating (सामान्य रेटिंग)</p>
+        <h2>4.8</h2>
+      </ion-label>
+    </ion-card>
+
+    <ion-card class="stat-card">
+      <ion-label>
+        <p>Total Earnings (एकूण कमाई)</p>
+        <h2>₹150</h2>
+      </ion-label>
+    </ion-card>
+  </div>
+
 </ion-content>

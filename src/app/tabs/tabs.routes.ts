@@ -22,6 +22,14 @@ export const routes: Routes = [
           import('../tab3/tab3.page').then((m) => m.Tab3Page),
       },
       {
+        path: 'invoice-info/:code',
+        loadComponent: () => import('../invoice-info/invoice-info.page').then( m => m.InvoiceInfoPage)
+      },
+      {
+        path: 'invoice-photo',
+        loadComponent: () => import('../captures/invoice-photo/invoice-photo.page').then( m => m.InvoicePhotoPage)
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full',

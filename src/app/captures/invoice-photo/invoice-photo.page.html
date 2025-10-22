@@ -1,0 +1,101 @@
+<ion-header class="custom-header">
+  <ion-toolbar>
+    <ion-buttons slot="start" class="ion-padding" (click)="goBack()">
+      <ion-icon name="arrow-back-circle" color="light"></ion-icon>
+    </ion-buttons>
+    <ion-title class="header-title">
+      Invoice Photo
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" color="light">
+        <ion-icon name="power-outline" color="light" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="false" class="ion-no-padding">
+  <!-- Step 1: Take invoice photo -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="ion-text-center text-danger">Step 1: Capture Invoice Photo</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div *ngIf="invoicePreview" class="photo-preview">
+        <img [src]="invoicePreview" alt="Invoice Photo" />
+      </div>
+      <div *ngIf="!invoicePreview" class="photo-preview">
+        <img src="./assets/dist/img/default-img-bg.png" alt="Invoice Photo" />
+      </div>
+      <div class="mt-2">
+        <ion-button *ngIf="!invoicePreview" expand="block" class="camera-click-btn" (click)="takeInvoicePhoto()">
+          <ion-icon name="camera-outline" slot="start"></ion-icon>
+          Click Invoice Photo
+        </ion-button>
+        <ion-button *ngIf="invoicePreview" expand="block" class="camera-click-success-btn">
+          <ion-icon name="checkmark-done-circle" slot="start"></ion-icon>
+          Captured Successful
+        </ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Step 2: Take Delivery Order photo -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="ion-text-center text-danger">Step 2: Capture Delivery Order Photo</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div *ngIf="locationPreview" class="photo-preview">
+        <img [src]="locationPreview" alt="Invoice Photo" />
+      </div>
+      <div *ngIf="!locationPreview" class="photo-preview">
+        <img src="./assets/dist/img/default-img-bg.png" alt="Invoice Photo" />
+      </div>
+      <div class="mt-2">
+        <ion-button *ngIf="!locationPreview"  expand="block" class="camera-click-btn" (click)="takeLocationPhoto()">
+          <ion-icon name="camera-outline" slot="start"></ion-icon>
+          Click Order Photo
+        </ion-button>
+        <ion-button *ngIf="locationPreview" expand="block" class="camera-click-success-btn">
+          <ion-icon name="checkmark-done-circle" slot="start"></ion-icon>
+          Captured Successful
+        </ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <div class="bottom-btn-container">
+    <ion-row class="ion-no-padding ion-no-margin">
+      <ion-col size="6">
+        <ion-button expand="block" class="retake-btn" shape="round" (click)="resetCaptures()">
+          <ion-icon name="arrow-undo-circle" slot="start"></ion-icon>
+          Retake
+        </ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button
+          expand="block"
+          class="complete-btn"
+          shape="round"
+          [disabled]="!isDeliveryReady"
+          id="present-alert">
+          <ion-icon name="arrow-forward-circle" slot="end"></ion-icon>
+          Complete
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-alert
+      trigger="present-alert"
+      header="Do you want to complete the delivery?"
+      message="Once you done it cannot be chnaged!"
+      [buttons]="alertButtons"
+      (didDismiss)="setResult($event)"
+    ></ion-alert>
+  </div>
+</ion-content>
+
+
+

@@ -1,15 +1,31 @@
 import { Component } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/standalone';
-import { ExploreContainerComponent } from '../explore-container/explore-container.component';
+import {IonicModule} from "@ionic/angular";
+import {addIcons} from "ionicons";
+import {arrowBackOutline, chevronDownOutline} from "ionicons/icons";
+import {
+  IonButton,
+  IonButtons, IonCard, IonContent,
+  IonHeader,
+  IonIcon, IonItem, IonLabel,
+  IonMenuButton,
+  IonTitle,
+  IonToolbar
+} from "@ionic/angular/standalone";
 
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, ExploreContainerComponent]
+  standalone: true,
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButtons, IonButton, IonIcon, IonCard, IonItem, IonLabel, IonMenuButton],
 })
 export class Tab2Page {
 
-  constructor() {}
+  constructor() {
+    addIcons({
+      arrowBackOutline,
+      chevronDownOutline
+    })
+  }
 
 }
