@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {addIcons} from "ionicons";
+import * as LiveUpdates from '@capacitor/live-updates';
+
 import {documentTextOutline, homeOutline, powerOutline, settingsOutline, statsChartOutline} from "ionicons/icons";
 import {
   IonAlert, IonApp,
@@ -36,6 +38,20 @@ export class AppComponent {
       settingsOutline,
       powerOutline
     });
+    this.initialize();
+  }
+
+  async initialize() {
+    try {
+      const result = await LiveUpdates.sync();
+      // result.activeApplicationPathChanged === true if a new version was downloaded
+      if (result.activeApplicationPathChanged) {
+        // reload to apply update
+        await LiveUpdates.reload();
+      }
+    } catch (e) {
+      console.error('LiveUpdates sync failed', e);
+    }
   }
 
 }
